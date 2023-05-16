@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: green;
+}
+
+input {
+    width: 300px;
+    height: 40px;
+    font-size: 20px;
+}
+
+button {
+    width: 100px;
+    height: 40px;
+    font-size: 20px;
+    background-color: green;
+    color: white;
+}
+
+#qr-code {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}

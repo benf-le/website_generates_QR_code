@@ -1,0 +1,63 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>QR Code Generator</h1>
+<p>Nhập ID của bạn vào đây</p>
+<input id="id-input" type="text" placeholder="Enter your ID here">
+<button id="generate-button" onclick="generateQRCode()">Generate</button>
+<div id="qr-code"></div>
+<button id="download-button" onclick="downloadQRCode()" disabled>Download</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+    var qrcode; // Declare a global variable to store the QR code object
+
+    function generateQRCode() {
+        // Get the input value
+        var id = document.getElementById("id-input").value;
+
+        // Clear the previous QR code
+        document.getElementById("qr-code-ID").innerHTML = "";
+
+        // Create a new QR code
+        qrcode = new QRCode(document.getElementById("qr-code"), {
+            text: id,
+            width: 200,
+            height: 200,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+
+        // Enable the download button
+        document.getElementById("download-button").disabled = false;
+    }
+
+    function downloadQRCode() {
+        // Get the QR code canvas element
+        var canvas = qrcode._oDrawing._elCanvas;
+
+        // Convert the canvas to a data URL
+        var dataURL = canvas.toDataURL("image/png");
+
+        // Create a temporary link element
+        var link = document.createElement("a");
+
+        // Set the link attributes
+        link.href = dataURL;
+        link.download = "qr-code.png";
+
+        // Append the link to the document
+        document.body.appendChild(link);
+
+        // Simulate a click on the link
+        link.click();
+
+        // Remove the link from the document
+        document.body.removeChild(link);
+    }
+</script>
+</body>
+</html>

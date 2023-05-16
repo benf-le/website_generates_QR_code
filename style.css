@@ -11,6 +11,9 @@ input {
     width: 300px;
     height: 40px;
     font-size: 20px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 button {
@@ -19,6 +22,15 @@ button {
     font-size: 20px;
     background-color: green;
     color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: green;
+    color: white;
+    opacity: 0.8;
 }
 
 #qr-code {
@@ -26,4 +38,9 @@ button {
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
 }

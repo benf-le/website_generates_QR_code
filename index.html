@@ -1,15 +1,19 @@
 <html>
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>NAPA QR Code Generator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 <h1>QR Code Generator</h1>
-<p>Nhập ID của bạn vào đây</p>
-<input id="id-input" type="text" placeholder="Enter your ID here">
+<p>Nhập ID và bấm nút Generate để tạo mã QR</p>
+<input id="id-input" type="text" placeholder="Nhập ID của bạn vào đây">
 <button id="generate-button" onclick="generateQRCode()">Generate</button>
 <div id="qr-code"></div>
 <button id="download-button" onclick="downloadQRCode()" disabled>Download</button>
+<footer>Developed by Lê Cẩm Bằng</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
     var qrcode; // Declare a global variable to store the QR code object
@@ -18,8 +22,15 @@
         // Get the input value
         var id = document.getElementById("id-input").value;
 
+        // Check if the input is empty
+        if (id == "") {
+            // Show an alert message
+            alert("Chưa có thông tin được nhập");
+            return; // Exit the function
+        }
+
         // Clear the previous QR code
-        document.getElementById("qr-code-ID").innerHTML = "";
+        document.getElementById("qr-code").innerHTML = "";
 
         // Create a new QR code
         qrcode = new QRCode(document.getElementById("qr-code"), {
@@ -47,7 +58,7 @@
 
         // Set the link attributes
         link.href = dataURL;
-        link.download = "qr-code.png";
+        link.download = "NAPA-id-qr-code.png";
 
         // Append the link to the document
         document.body.appendChild(link);
